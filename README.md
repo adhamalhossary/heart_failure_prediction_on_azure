@@ -1,8 +1,10 @@
-*NOTE:* This file is a template that you can use to create the README for your project. The *TODO* comments below will highlight the information you should be sure to include.
+# Heart Failure Prediction
 
-# Your Project Title Here
+In this project we create machine learning model to solve a classification problem using both Hyperdrive and AutoML. We then deploy the best model as a webservice. Below is a diagram demonstrating the steps taken in this project:
 
-*TODO:* Write a short introduction to your project.
+![Workflow](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/workflow.png)
+
+(Image taken from Udacity)
 
 ## Project Set Up and Installation
 *OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
