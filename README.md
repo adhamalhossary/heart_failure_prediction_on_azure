@@ -93,7 +93,7 @@ The best model was the Voting Ensemble model from the AutoML experiment. To depl
 
 After the model was deployed we interact with web service by using the REST API as follows:
 
-`scoring_uri = service.scoring_uri # Rest Endpoint
+`scoring_uri = service.scoring_uri # Rest Endpoint`
 headers = {'Content-Type':'application/json'}
 
 test_data_1 = json.dumps({'data':[{
