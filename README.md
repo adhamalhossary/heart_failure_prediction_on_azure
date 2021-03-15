@@ -71,9 +71,8 @@ We use a RandomParameterSampling to randomly select hyperparamter values from th
 We also specifiy a BanditPolicy to terminate runs early if they are not achieving the same performance as the best model. This also adds to improving computational efficiency and saving time as it automatically terminates models with a poor performance.
 
 ### Results
-*TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+We use the RunDetails Widget to get the details of the hyperdrive experiment. Below are a set of screen shots from RunDetails():
 
 ![hyperdrive_1](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hyperdrive_1.png)
 
@@ -81,10 +80,63 @@ We also specifiy a BanditPolicy to terminate runs early if they are not achievin
 
 ![hyperdrive_best](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hyperdrive_best.png)
 
+It can be seen above that the best model had parameters of C = 0.1 and max_iter = 50, and achieved an accuracy of 80%.
 
 ## Model Deployment
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
 
+The best model was the Voting Ensemble model from the AutoML experiment. To deploy the model we did the following:
+
+- Saved the model
+- Used score.py in the inference configuration of the deployed model to answer the requests sent to the webservice
+- Created a deployment configuration
+
+After the model was deployed we interact with web service by using the REST API as follows:
+
+`scoring_uri = service.scoring_uri # Rest Endpoint
+headers = {'Content-Type':'application/json'}
+
+test_data_1 = json.dumps({'data':[{
+    'age':75,
+    'anaemia':0,
+    'creatinine_phosphokinase':582,
+    'diabetes':0,
+    'ejection_fraction':20,
+    'high_blood_pressure':1,
+    'platelets':265000,
+    'serum_creatinine':1.9,
+    'serum_sodium':130,
+    'sex':1,
+    'smoking':0,
+    'time':4}
+    ]
+        })
+
+test_data_2 = json.dumps({'data':[{
+    'age':40,
+    'anaemia':0,
+    'creatinine_phosphokinase':321,
+    'diabetes':0,
+    'ejection_fraction':35,
+    'high_blood_pressure':0,
+    'platelets':265000,
+    'serum_creatinine':1,
+    'serum_sodium':130,
+    'sex':1,
+    'smoking':0,
+    'time':198}
+    ]
+        })
+
+response = requests.post(scoring_uri, data=test_data_1, headers=headers)
+
+print("Result 1:",response.text)
+
+
+response = requests.post(scoring_uri, data=test_data_2, headers=headers)
+
+print("Result 2:",response.text)`
+
 ## Screen Recording
 
-Link: https://youtu.be/LEsDIIhvDD0
+Link to video: https://youtu.be/LEsDIIhvDD0
