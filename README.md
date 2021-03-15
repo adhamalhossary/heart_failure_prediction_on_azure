@@ -8,36 +8,79 @@ In this project we create machine learning model to solve a classification probl
 
 (Image taken from Udacity)
 
-## Project Set Up and Installation
-*OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
-
 ## Dataset
 
 ### Overview
-*TODO*: Explain about the data you are using and where you got it from.
+We use the Heart Failure Prediction dataset that is publicly available on Kaggle https://www.kaggle.com/andrewmvd/heart-failure-clinical-data. This dataset contains various information on an individual such as sex, diabetes, high blood pressure etc. and if the cause of death was due to a heart failure.
 
 ### Task
-*TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
+Our goal is to develop a machine learning algorithm that can detect if a person is likely to die from a heart failure. This helps in diagnosis and early prevention. For this we are going to be using all 12 features in the dataset to develop an accurate model.
 
 ### Access
-*TODO*: Explain how you are accessing the data in your workspace.
+We access the data in automl by importing the dataset locally that was uploaded into the machine learning workspace. On the other hand with hyper drive, we use a URL to access the data directly from Kaggle.
 
 ## Automated ML
-*TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
+The settings that were used in automl were as follow:
+
+automl_settings = {    
+    "experiment_timeout_minutes": 20,
+    "max_concurrent_iterations": 5,
+    "primary_metric" : 'accuracy'}
+    
+From the settings above it can be seen that the primary metric chosen to evaluate the performance of the models is Accuracy. The experiment was set to end after 20 mins as AutoML manages to test several models in a short time period. Max concurrent iterations are the maximum number of iterations that are allowed to be executed in parallel.
+    
+The automl configuration used were as follow:
+
+automl_config = AutoMLConfig(
+    task="classification",
+    training_data= train_data,
+    featurization="auto",
+    enable_early_stopping=True,
+    label_column_name= "DEATH_EVENT",
+    n_cross_validations=4,
+    compute_target=cpu_cluster,
+    **automl_settings)
+    
+It can be seen from the configuration that we specifying the target column we are trying to predict which is the "DEATH_EVENT" column.
 
 ### Results
-*TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+We use the RunDetails Widget to get the details of the AutoML experiment. Below are a set of screen shots from RunDetails():
+
+![automl_1](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/automl_1.png)
+
+![automl_2](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/automl_1.png)
+
+![automl_3](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/automl_1.png)
+
+Below is a screenshot of the parameters of the Voting Ensemble model
+
+![best_model](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/best_model.png)
+
+From the AutoML experiment we can see that the best model was a Voting Ensemble model with an accuracy of 86%. What is interesting as seen in the screen shot above, is that the weights of all the features in the model are the same (0.143). This is something that is to be investigated in detail as future work.
 
 ## Hyperparameter Tuning
-*TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
 
+We use a Logistic Regression model as they are well-known to be fast and fairly accurate. The two hyper parameters we choose to tune with their ranges are as follows:
+
+ - "--C": choice(0.1,1,10)
+ - "--max_iter": choice(50,100,150)
+
+We use a RandomParameterSampling to randomly select hyperparamter values from the specified range above. This is much better than a grid sweep as it is not as computationally expensive and time-consuming and can choose parameters that achieve high accuracy. Random sampler also supports early termination of low-performance runs, thus saving on computational resources.
+
+We also specifiy a BanditPolicy to terminate runs early if they are not achieving the same performance as the best model. This also adds to improving computational efficiency and saving time as it automatically terminates models with a poor performance.
 
 ### Results
 *TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+
+![hyperdrive_1](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hyperdrive_1.png)
+
+![hyperdrive_2](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hyperdrive_1.png)
+
+![hyperdrive_best](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hyperdrive_best.png)
+
 
 ## Model Deployment
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
