@@ -3,9 +3,7 @@
 In this project we create machine learning model to solve a classification problem using both Hyperdrive and AutoML. We then deploy the best model as a webservice. Below is a diagram demonstrating the steps taken in this project:
 
 <p align="center">
-
-  ![Workflow](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/workflow.png)
-
+  <src="https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/workflow.png">
 </p>
 
 (Image taken from Udacity)
