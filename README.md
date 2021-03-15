@@ -17,20 +17,23 @@ We use the Heart Failure Prediction dataset that is publicly available on Kaggle
 Our goal is to develop a machine learning algorithm that can detect if a person is likely to die from a heart failure. This helps in diagnosis and early prevention. For this we are going to be using all 12 features in the dataset to develop an accurate model.
 
 ### Access
-We access the data in automl by importing the dataset locally that was uploaded into the machine learning workspace. On the other hand with hyper drive, we use a URL to access the data directly from Kaggle.
+We access the data in AutoML by importing the dataset locally that was uploaded into the machine learning workspace. On the other hand with hyper drive, we use a URL to access the data directly from Kaggle.
 
 ## Automated ML
 The settings that were used in automl were as follow:
 
+```
 automl_settings = {    
     "experiment_timeout_minutes": 20,
     "max_concurrent_iterations": 5,
     "primary_metric" : 'accuracy'}
-    
-From the settings above it can be seen that the primary metric chosen to evaluate the performance of the models is Accuracy. The experiment was set to end after 20 mins as AutoML manages to test several models in a short time period. Max concurrent iterations are the maximum number of iterations that are allowed to be executed in parallel.
+```
+
+From the settings above the primary metric chosen to evaluate the performance of the models is Accuracy. The experiment was set to end after 20 mins as AutoML manages to test several models in a short time. Max concurrent iterations are the maximum number of iterations that can be executed in parallel.
     
 The automl configuration used were as follow:
 
+```
 automl_config = AutoMLConfig(
     task="classification",
     training_data= train_data,
@@ -40,8 +43,9 @@ automl_config = AutoMLConfig(
     n_cross_validations=4,
     compute_target=cpu_cluster,
     **automl_settings)
+```
     
-It can be seen from the configuration that we specifying the target column we are trying to predict which is the "DEATH_EVENT" column.
+It can be seen from the configuration that we specify the target column we are trying to predict which is the "DEATH_EVENT" column.
 
 ### Results
 
@@ -68,7 +72,7 @@ We use a Logistic Regression model as they are well-known to be fast and fairly 
 
 We use a RandomParameterSampling to randomly select hyperparamter values from the specified range above. This is much better than a grid sweep as it is not as computationally expensive and time-consuming and can choose parameters that achieve high accuracy. Random sampler also supports early termination of low-performance runs, thus saving on computational resources.
 
-We also specifiy a BanditPolicy to terminate runs early if they are not achieving the same performance as the best model. This also adds to improving computational efficiency and saving time as it automatically terminates models with a poor performance.
+We also specify a BanditPolicy to terminate runs early if they are not achieving the same performance as the best model. This also adds to improving computational efficiency and saving time as it automatically terminates models with a poor performance.
 
 ### Results
 
@@ -83,7 +87,6 @@ We use the RunDetails Widget to get the details of the hyperdrive experiment. Be
 It can be seen above that the best model had parameters of C = 0.1 and max_iter = 50, and achieved an accuracy of 80%.
 
 ## Model Deployment
-*TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
 
 The best model was the Voting Ensemble model from the AutoML experiment. To deploy the model we did the following:
 
@@ -140,6 +143,7 @@ response = requests.post(scoring_uri, data=test_data_2, headers=headers)
 print("Result 2:",response.text)
 
 ```
+We then receive from the model [1] for the first response, and [0] for the second.
 
 ## Screen Recording
 
