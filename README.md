@@ -93,10 +93,12 @@ The best model was the Voting Ensemble model from the AutoML experiment. To depl
 
 After the model was deployed we interact with web service by using the REST API as follows:
 
-`scoring_uri = service.scoring_uri # Rest Endpoint`
-`headers = {'Content-Type':'application/json'}`
+```
 
-`test_data_1 = json.dumps({'data':[{`
+scoring_uri = service.scoring_uri # Rest Endpoint
+headers = {'Content-Type':'application/json'}
+
+test_data_1 = json.dumps({'data':[{
     'age':75,
     'anaemia':0,
     'creatinine_phosphokinase':582,
@@ -135,7 +137,9 @@ print("Result 1:",response.text)
 
 response = requests.post(scoring_uri, data=test_data_2, headers=headers)
 
-print("Result 2:",response.text)``
+print("Result 2:",response.text)
+
+```
 
 ## Screen Recording
 
