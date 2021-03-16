@@ -90,6 +90,10 @@ The best model was the Voting Ensemble model from the AutoML experiment. To depl
 - Used score.py in the inference configuration of the deployed model to answer the requests sent to the webservice
 - Created a deployment configuration
 
+The screenshot below shows the deployed model endpoint as Healthy.
+
+![deployed](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/deployed.png)
+
 After the model was deployed we interact with web service by using the REST API as follows:
 
 ```
