@@ -147,4 +147,4 @@ We then receive from the model [1] for the first response, and [0] for the secon
 
 ## Screen Recording
 
-Link to video: https://youtu.be/LEsDIIhvDD0
+Link to video: https://youtu.be/Cbv2T6jIc7s
