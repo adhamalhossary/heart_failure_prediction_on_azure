@@ -51,11 +51,11 @@ It can be seen from the configuration that we specify the target column we are t
 
 ### Results
 
-We use the RunDetails Widget to get the details of the AutoML experiment. Below is a screen shot of the RunDetails Widget:
+We use the RunDetails Widget to get the details of the AutoML experiment. Below is a screen shot of the RunDetails Widget showing the details of the child runs. It also shows that the best model was a Voting Ensemble model:
 
 ![automl_rundetails](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/automl_rundetails.png)
 
-Below is a screenshot of the parameters of the Voting Ensemble model
+Below is a screenshot of the parameters of the Voting Ensemble model:
 
 ![best_model](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/best_model.png)
 
@@ -81,6 +81,11 @@ We use the RunDetails Widget to get the details of the hyperdrive experiment. Be
 ![hyperdrive_2](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hyperdrive_1.png)
 
 ![hyperdrive_best](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hyperdrive_best.png)
+
+![hd_rw_1](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hd_rw_1.png)
+
+![hd_rw_2](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hd_rw_2.png)
+
 
 It can be seen above that the best model had parameters of C = 0.1 and max_iter = 50, and achieved an accuracy of 80%.
 
@@ -154,9 +159,10 @@ Link to video: https://youtu.be/Cbv2T6jIc7s
 
 ### Future Work
 
-- We know that we want to detect all individuals who might have a heart failure in the near future. Detecting someone who won't have a heart failure as someone who will, is less harmful than detecting someone who will have a heart failure as someone who won't. The former will be diagnosed an realise he is fin, but the latter might miss the oppurtinity for early prevention, and it might be too late to save that individual from a heart failure. Therefore, we want a model that has a high recall compared to high precision. Using a high recall as a primary metric instead of accuracy would be more suitable for this problem.
+- We know that we want to detect all individuals who might have a heart failure in the near future. Detecting someone who won't have a heart failure as someone who will, is less harmful than detecting someone who will have a heart failure as someone who won't. The former will be diagnosed an realise he is fine, but the latter might miss the oppurtinity for early prevention, and it might be too late to save that individual from a heart failure. Therefore, we want a model that has a high recall compared to high precision. Using a high recall as a primary metric instead of accuracy would be more suitable for this problem.
 
 - The dataset contains only 12 features which might not be providing the models with enough information to have a high accuracy. Using domain knowledge, it might be beneficial to combine external datasets with this dataset or create more features as it might improve the accuracy of the models.
-
+ 
 - Increase experiment timeout in the AutoML experiment to try more models as we might get more accurate models
+
 - Taking the voting ensemble algorithm from the AutoML run and tuning its hyper parameters using Hyperdrive. AutoML uses Bayesian Optimization to choose the best hyper parameters. It would be beneficial to use hyperdrive and try different parameter sampling methods including random and grid parameter sampling. These methods might detect a different set of hyper parameters that give a better accuracy than those chosen by AutoML.
