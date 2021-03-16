@@ -78,7 +78,7 @@ We use the RunDetails Widget to get the details of the hyperdrive experiment. Be
 
 ![hyperdrive_1](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hyperdrive_1.png)
 
-![hyperdrive_2](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hyperdrive_1.png)
+![hyperdrive_2](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hyperdrive_2.png)
 
 The next two screenshots show the Run Details from the ML studio. This shows clearly the various models trained with their hyper parameters.
 
