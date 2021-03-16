@@ -49,13 +49,9 @@ It can be seen from the configuration that we specify the target column we are t
 
 ### Results
 
-We use the RunDetails Widget to get the details of the AutoML experiment. Below are a set of screen shots from RunDetails():
+We use the RunDetails Widget to get the details of the AutoML experiment. Below is a screen shot of the RunDetails Widget:
 
-![automl_1](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/automl_1.png)
-
-![automl_2](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/automl_1.png)
-
-![automl_3](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/automl_1.png)
+![automl_rundetails](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/automl_rundetails.png)
 
 Below is a screenshot of the parameters of the Voting Ensemble model
 
