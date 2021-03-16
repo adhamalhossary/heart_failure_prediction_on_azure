@@ -162,7 +162,7 @@ Link to video: https://youtu.be/Cbv2T6jIc7s
 
 ### Future Work
 
-- We know that we want to detect all individuals who might have a heart failure in the near future. Detecting someone who won't have a heart failure as someone who will, is less harmful than detecting someone who will have a heart failure as someone who won't. The former will be diagnosed an realise he is fine, but the latter might miss the oppurtinity for early prevention, and it might be too late to save that individual from a heart failure. Therefore, we want a model that has a high recall compared to high precision. Using a high recall as a primary metric instead of accuracy would be more suitable for this problem.
+- We know that we want to detect all individuals who might have a heart failure in the near future. Detecting someone who won't have a heart failure as someone who will, is less harmful than detecting someone who will have a heart failure as someone who won't. The former will be diagnosed and realise he is fine, but the latter might miss the oppurtinity for early prevention, and it might be too late to save that individual from a heart failure. Therefore, we want a model that has a high recall compared to high precision. Using a high recall as a primary metric instead of accuracy would be more suitable for this problem.
 
 - The dataset contains only 12 features which might not be providing the models with enough information to have a high accuracy. Using domain knowledge, it might be beneficial to combine external datasets with this dataset or create more features as it might improve the accuracy of the models.
  
