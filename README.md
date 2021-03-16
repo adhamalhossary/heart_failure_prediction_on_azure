@@ -68,6 +68,8 @@ We use a Logistic Regression model as they are well-known to be fast and fairly 
  - "--C": choice(0.1,1,10)
  - "--max_iter": choice(50,100,150)
 
+C represents the inverse of the regularization strength, while max_iter represents the maximum number of iterations taken for the model to converge.
+
 We use a RandomParameterSampling to randomly select hyperparamter values from the specified range above. This is much better than a grid sweep as it is not as computationally expensive and time-consuming and can choose parameters that achieve high accuracy. Random sampler also supports early termination of low-performance runs, thus saving on computational resources.
 
 We also specify a BanditPolicy to terminate runs early if they are not achieving the same performance as the best model. This also adds to improving computational efficiency and saving time as it automatically terminates models with a poor performance.
