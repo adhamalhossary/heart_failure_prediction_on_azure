@@ -1,6 +1,8 @@
 # Heart Failure Prediction
 
-In this project we create machine learning model to solve a classification problem using both Hyperdrive and AutoML. We then deploy the best model as a webservice. Below is a diagram demonstrating the steps taken in this project:
+In this project, our goal was to build a classification model that can accurately detect if an individual is most likely to die from a heart failure. Cardiovascular diseases (CVDs) are the number 1 cause of deaths globally, taking an estimated 17.9 million lives each year, which accounts for 31% of all deaths worldwide. Therefore, having a model that can accurately tell us the likeliness of an individual having a heart failure will assist in diagnosis and early prevention. To build an accurate model that can solve such a problem, we use the Machine Learning Studio on Azure. We use both Hyperdrive and AutoML to build classification models. The performance of the models are compared, and the best model is deployed as a webservice.
+
+Below is a diagram demonstrating the steps taken in this project:
 
 <p align="center">
   <img width="600" height="600" src="https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/workflow.png">
@@ -148,3 +150,13 @@ We then receive from the model [1] for the first response, and [0] for the secon
 ## Screen Recording
 
 Link to video: https://youtu.be/Cbv2T6jIc7s
+
+
+### Future Work
+
+- We know that we want to detect all individuals who might have a heart failure in the near future. Detecting someone who won't have a heart failure as someone who will, is less harmful than detecting someone who will have a heart failure as someone who won't. The former will be diagnosed an realise he is fin, but the latter might miss the oppurtinity for early prevention, and it might be too late to save that individual from a heart failure. Therefore, we want a model that has a high recall compared to high precision. Using a high recall as a primary metric instead of accuracy would be more suitable for this problem.
+
+- The dataset contains only 12 features which might not be providing the models with enough information to have a high accuracy. Using domain knowledge, it might be beneficial to combine external datasets with this dataset or create more features as it might improve the accuracy of the models.
+
+- Increase experiment timeout in the AutoML experiment to try more models as we might get more accurate models
+- Taking the voting ensemble algorithm from the AutoML run and tuning its hyper parameters using Hyperdrive. AutoML uses Bayesian Optimization to choose the best hyper parameters. It would be beneficial to use hyperdrive and try different parameter sampling methods including random and grid parameter sampling. These methods might detect a different set of hyper parameters that give a better accuracy than those chosen by AutoML.
