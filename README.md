@@ -1,6 +1,6 @@
 # Heart Failure Prediction
 
-In this project, our goal was to build a classification model that can accurately detect if an individual is most likely to die from a heart failure. Cardiovascular diseases (CVDs) are the number 1 cause of deaths globally, taking an estimated 17.9 million lives each year, which accounts for 31% of all deaths worldwide. Therefore, having a model that can accurately tell us the likeliness of an individual having a heart failure will assist in diagnosis and early prevention. To build an accurate model that can solve such a problem, we use the Machine Learning Studio on Azure. We use both Hyperdrive and AutoML to build classification models. The performance of the models are compared, and the best model is deployed as a webservice.
+In this project, our goal was to build a classification model that can accurately detect if an individual is most likely to die from a heart failure. Cardiovascular diseases (CVDs) are the number 1 cause of deaths globally, taking an estimated 17.9 million lives each year, which accounts for 31% of all deaths worldwide. Therefore, having a model that can accurately tell us the likelihood of an individual having a heart failure will assist in diagnosis and early prevention. To build an accurate model that can solve such a problem, we use the Machine Learning Studio on Azure. We use both Hyperdrive and AutoML to build classification models. The performance of the models are compared, and the best model is deployed as a webservice.
 
 Below is a diagram demonstrating the steps taken in this project:
 
