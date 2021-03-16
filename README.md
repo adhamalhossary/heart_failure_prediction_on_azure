@@ -74,18 +74,21 @@ We also specify a BanditPolicy to terminate runs early if they are not achieving
 
 ### Results
 
-We use the RunDetails Widget to get the details of the hyperdrive experiment. Below are a set of screen shots from RunDetails():
+We use the RunDetails Widget to get the details of the hyperdrive experiment. Below are a set of screen shots from the Run Details Widget in the Notebook:
 
 ![hyperdrive_1](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hyperdrive_1.png)
 
 ![hyperdrive_2](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hyperdrive_1.png)
 
-![hyperdrive_best](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hyperdrive_best.png)
+The next two screenshots show the Run Details from the ML studio. This shows clearly the various models trained with their hyper parameters.
 
 ![hd_rw_1](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hd_rw_1.png)
 
 ![hd_rw_2](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hd_rw_2.png)
 
+The screenshot below shows the parameters of the best model.
+
+![hyperdrive_best](https://github.com/adhamalhossary/heart_failure_prediction_on_azure/blob/main/images/hyperdrive_best.png)
 
 It can be seen above that the best model had parameters of C = 0.1 and max_iter = 50, and achieved an accuracy of 80%.
 
